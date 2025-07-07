@@ -1,26 +1,17 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
 import "./style.css";
-import typescriptLogo from "/typescript.svg";
-import { Header, Counter } from "@repo/ui";
+import { createRoot } from "react-dom/client";
+import App from "./App";
 
-const App = () => (
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" className="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img
-        src={typescriptLogo}
-        className="logo vanilla"
-        alt="TypeScript logo"
-      />
-    </a>
-    <Header title="Web" />
-    <div className="card">
-      <Counter />
-    </div>
-  </div>
-);
+const container = document.querySelector("#root") as HTMLDivElement;
 
-createRoot(document.getElementById("app")!).render(<App />);
+if (!container.innerHTML) {
+  const root = createRoot(container);
+  root.render(
+    <React.StrictMode>
+      <React.Suspense fallback="loading">
+        <App />
+      </React.Suspense>
+    </React.StrictMode>
+  );
+}
