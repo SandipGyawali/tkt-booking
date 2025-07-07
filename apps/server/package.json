@@ -1,0 +1,28 @@
+{
+    "name": "tkt-booking-server",
+    "version": "1.0.0",
+    "description": "A Node Typescript Server with graphql for tkt-booking",
+    "keywords": [
+        "js",
+        "ts",
+        "typescript",
+        "javascript",
+        "express",
+        "node"
+    ],
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon --exec node --loader ts-node/esm ./src/app.ts"
+    },
+    "dependencies": {
+        "express": "^5.1.0",
+        "express-graphql": "^0.12.0",
+        "graphql": "^16.11.0"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.3",
+        "@types/node": "^24.0.10",
+        "nodemon": "^3.1.10",
+        "ts-node": "^10.9.2"
+    }
+}
