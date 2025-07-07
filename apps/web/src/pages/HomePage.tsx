@@ -2,6 +2,7 @@ import ContributionCard from "@/components/ContributionCard";
 import { RetroFAQ } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import NewsLetter from "@/components/NewLetter";
 import { TrailerCarousel } from "@/components/TrailerCarousel";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -277,7 +278,8 @@ function Home() {
           <RetroFAQ />
         </section>
 
-        <ContributionCard />
+        {/* <ContributionCard /> */}
+        <NewsLetter />
       </main>
       <Footer />
 
