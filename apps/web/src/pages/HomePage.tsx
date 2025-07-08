@@ -1,4 +1,3 @@
-import ContributionCard from "@/components/ContributionCard";
 import { RetroFAQ } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -197,10 +196,6 @@ function Home() {
                 </div>
               </div>
             </div>
-
-            {/* end */}
-
-            {/* start */}
 
             {/* end */}
           </div>

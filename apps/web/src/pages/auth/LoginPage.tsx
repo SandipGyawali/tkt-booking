@@ -1,5 +1,11 @@
+import { LoginForm } from "@/components/Auth/Login";
+
 function LoginPage() {
-  return <>Login Page</>;
+  return (
+    <>
+      <LoginForm />
+    </>
+  );
 }
 
 export default LoginPage;

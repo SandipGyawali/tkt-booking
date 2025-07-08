@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/Button";
-import { AlignJustify } from "lucide-react";
+import { AlignJustify, MoveIcon } from "lucide-react";
 import { useState } from "react";
 import { Drawer, DrawerClose, DrawerContent, DrawerFooter } from "./ui/drawer";
 import { cn } from "@/lib/utils";
+import { useUser, UserButton } from "@clerk/clerk-react";
+import { Route } from "@/enum/route.enum";
 
 function NavLinks({ className }: { className?: string }) {
   return (
@@ -34,9 +36,18 @@ function NavLinks({ className }: { className?: string }) {
 }
 
 function LoginButton({ className }: { className?: string }) {
+  const navigate = useNavigate();
+
   return (
     <div className={cn("items-center gap-4", className)}>
-      <Button variant="default" size="sm" className="rounded-md">
+      <Button
+        variant="default"
+        onClick={() => {
+          navigate("/login");
+        }}
+        size="sm"
+        className="rounded-md"
+      >
         Login
       </Button>
     </div>
@@ -44,6 +55,8 @@ function LoginButton({ className }: { className?: string }) {
 }
 
 function Navbar() {
+  const navigate = useNavigate();
+  const { user } = useUser();
   const [onOpenExtend, setOnOpenExtend] = useState<boolean>(false);
 
   return (
@@ -54,7 +67,21 @@ function Navbar() {
         </Link>
 
         <NavLinks />
-        <LoginButton className="hidden md:flex" />
+        {!user ? (
+          <LoginButton className="hidden md:flex" />
+        ) : (
+          <UserButton>
+            <UserButton.MenuItems>
+              <UserButton.Action
+                label="My Bookings"
+                labelIcon={<MoveIcon width={15} />}
+                onClick={() => {
+                  navigate(Route.myBookings);
+                }}
+              />
+            </UserButton.MenuItems>
+          </UserButton>
+        )}
 
         <Button
           className="md:hidden p-1.5 rounded-md"
@@ -75,7 +102,7 @@ function Navbar() {
               <div className="w-full mt-3 h-[1px] border" />
 
               <DrawerFooter className="flex flex-col mx-auto">
-                <LoginButton />
+                {!user ? <LoginButton /> : <UserButton />}
                 <DrawerClose asChild>
                   <Button variant="outline" className="rounded-md" size="sm">
                     Close
