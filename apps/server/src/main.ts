@@ -57,6 +57,7 @@ class App {
   private routes(): void {
     this.app.use("/ping", Container.resolve<Router>("PingModule"));
     this.app.use("/graphql", Container.resolve<Router>("GraphQlModule"));
+    this.app.use("/api/inngest", Container.resolve<Router>("InngestModule"));
   }
 
   public listen() {

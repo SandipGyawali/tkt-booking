@@ -1,6 +1,8 @@
 import { Pool } from "pg";
 import { Injectable } from "../helpers/helper.di.ts";
 import { ENVIRONMENT } from "../lib/env.ts";
+import { drizzle } from "drizzle-orm/node-postgres";
+import * as schema from "../models/index.ts";
 
 @Injectable()
 export class Database {
@@ -20,6 +22,9 @@ export class Database {
   }
 
   public getClient() {
-    return this.pool;
+    return drizzle(this.pool, {
+      schema,
+      logger: true,
+    });
   }
 }

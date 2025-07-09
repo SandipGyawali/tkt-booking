@@ -6,6 +6,8 @@ const envSchema = z.object({
   DATABASE_URL: z.string(),
   PORT: z.coerce.number(),
   NODE_ENV: z.string(),
+  INNGEST_EVENT_KEY: z.string(),
+  INNGEST_SIGNING_KEY: z.string(),
 });
 
 export const ENVIRONMENT = envSchema.parse(process.env);

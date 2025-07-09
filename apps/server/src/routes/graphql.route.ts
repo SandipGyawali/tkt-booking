@@ -2,6 +2,7 @@ import { graphqlHTTP } from "express-graphql";
 import { Inject, Route, Router } from "../helpers/helper.di.ts";
 import graphQlSchema from "~/graphql/index.ts";
 import type { Pool } from "pg";
+import { requireAuth } from "@clerk/express";
 
 @Route()
 export class GraphQlRoute {
@@ -12,8 +13,9 @@ export class GraphQlRoute {
   }
 
   public configure() {
-    // Add middlewares (auth, etc) here if needed
-    // Example: this.router.use(authMiddleware);
+    // clerk middleware for authentication
+    this.router.use(requireAuth());
+    // graphql router.
     this.router.all(
       "/",
       graphqlHTTP({
