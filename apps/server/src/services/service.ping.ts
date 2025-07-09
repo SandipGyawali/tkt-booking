@@ -7,7 +7,7 @@ export class PingService {
 
   async ping() {
     const metaData: Record<string, unknown> = {
-      message: "Server Responding Properly",
+      message: "Server Connected",
       status: HttpStatusCode.OK,
     };
 

@@ -55,7 +55,8 @@ class App {
   }
 
   private routes(): void {
-    this.app.use("*", Container.resolve<Router>("PingModule"));
+    this.app.use("/ping", Container.resolve<Router>("PingModule"));
+    this.app.use("/graphql", Container.resolve<Router>("GraphQlModule"));
   }
 
   public listen() {
