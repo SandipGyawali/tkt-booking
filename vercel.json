@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "apps/web/index.html",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
+        },
+        {
+            "src": "apps/server/index.ts",
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": [
+                    "apps/server/**/*",
+                    "packages/**/*"
+                ]
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "apps/server/index.ts"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "apps/web/index.html"
+        }
+    ]
+}

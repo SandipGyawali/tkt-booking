@@ -15,4 +15,7 @@ export default defineConfig({
   define: {
     "process.env.VITE_API_URI": JSON.stringify(process.env.VITE_API_URI),
   },
+  build: {
+    outDir: "dist",
+  },
 });
