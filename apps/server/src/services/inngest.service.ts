@@ -21,6 +21,7 @@ export class InngestService {
       { id: "sync-user-from-clerk" },
       { event: "clerk/user.created" },
       async ({ event }) => {
+        console.log(event);
         const parsed = syncUserSchema.parse(event.data);
         const response = await this.service.syncUserCreation(parsed);
         return response;

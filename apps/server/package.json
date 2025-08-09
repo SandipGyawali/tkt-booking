@@ -12,7 +12,9 @@
     ],
     "type": "module",
     "scripts": {
-        "dev": "tsx --env-file=.env ./src/main.ts"
+        "dev": "tsx --env-file=.env ./src/main.ts",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate"
     },
     "dependencies": {
         "@clerk/express": "^1.7.4",
